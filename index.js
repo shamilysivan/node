@@ -1,10 +1,16 @@
-var http = require('http');
-//create a server object:
+const http = require('http');
+const port = process.env.PORT || 3000;
 
-http.createServer(function (req, res) {
-    res.write('Hello World!'); //write a response to the client
-    res.end(); //end the response
-}).listen(5000); //the server object listens on port 8080
+ 
 
-// Console will print the message
-console.log('Server running at 5000');
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  const msg = 'Hello Node!\n'
+  res.end(msg);
+});
+
+ 
+
+server.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}/`);
+});
